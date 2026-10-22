@@ -50,7 +50,7 @@ nav a:hover{background:var(--mint)}
 .btn:hover{transform:translateY(-2px)}
 .btn{transition:transform .15s}
 
-.hero .en-name{font-size:clamp(20px,2.6vw,28px);letter-spacing:.3em;color:var(--mint);margin:-6px 0 20px;font-family:var(--serif);font-weight:600}
+.hero .en-name{font-size:clamp(22px,3vw,32px);letter-spacing:.04em;color:var(--mint);margin:-4px 0 22px;font-family:var(--sans);font-weight:500}
 .about-wrap{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:center}
 .portrait{width:200px;height:200px;border-radius:50%;object-fit:cover;border:4px solid var(--card);box-shadow:0 0 0 2px var(--mint)}
 /* the four-field overlap */
@@ -95,13 +95,16 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
   .tbl th{width:auto;display:block;border-bottom:0;padding-bottom:0}
   .tbl td{display:block}
 }
+.hero-in{display:block;position:relative}
+.hero-in>div{max-width:34em}
+.fields{position:absolute;top:44px;right:24px;width:clamp(90px,14vw,150px);max-width:none;margin:0}
 </style>
 </head>
 <body>
 
 <header class="site">
   <div class="bar">
-    <a class="brand" href="#top">李莞霜</a>
+    <a class="brand" href="#top">Nancy</a>
     <nav aria-label="主選單">
       <ul>
         <li><a href="#about">關於我</a></li>
@@ -132,11 +135,6 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
       <circle cx="275" cy="150" r="105" fill="#3f8fd0"/>
       <circle cx="165" cy="255" r="105" fill="#e3a23a"/>
       <circle cx="275" cy="255" r="105" fill="#6cbf6a"/>
-      <text x="120" y="110">工業工程</text>
-      <text x="320" y="110">數據分析</text>
-      <text x="120" y="310">財務會計</text>
-      <text x="320" y="310">ESG永續</text>
-      <text x="220" y="208" style="font-size:17px">李莞霜</text>
     </svg>
   </div>
 </div>
