@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>財務流程自動化：Python 與 openpyxl 待付款清單整理｜Nancy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12302d;--muted:#4d6b67;--paper:#f3f8f6;--card:#fff;--teal:#0f6b63;--teal-deep:#0a3f3b;--mint:#cfe9e2;--amber:#e3a23a;--line:#d3e3de;
+--serif:"Noto Serif TC","Songti TC","PMingLiU",serif;--sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.8;font-size:17px}
+a{color:var(--teal)}
+a:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+header{background:rgba(243,248,246,.94);border-bottom:1px solid var(--line);position:sticky;top:0}
+.bar{max-width:760px;margin:0 auto;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{font-family:var(--serif);font-weight:900;font-size:22px;color:var(--teal-deep);text-decoration:none;letter-spacing:.04em}
+.back{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--mint);color:var(--teal-deep);font-weight:700;text-decoration:none;font-size:15px}
+.back:hover{background:var(--teal-deep);color:#fff}
+main{max-width:760px;margin:0 auto;padding:40px 24px 24px}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(26px,5vw,36px);line-height:1.35;color:var(--teal-deep);margin:0 0 28px}
+article p{margin:0 0 16px;line-height:1.95}
+article blockquote{margin:0 0 16px;padding:10px 16px;background:#e9f3f0;border-left:4px solid var(--teal);border-radius:0 8px 8px 0;font-weight:500;line-height:1.9}
+.end{margin-top:36px;padding-top:20px;border-top:1px solid var(--line)}
+footer{max-width:760px;margin:0 auto;padding:24px 24px 48px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header><div class="bar"><a class="brand" href="index.html">Nancy</a><a class="back" href="index.html#posts">← 回到網頁</a></div></header>
+<main>
+<article>
+<h1>財務流程自動化：Python 與 openpyxl 待付款清單整理</h1>
+<p>最近又做了一個小小的流程改善。😊</p>
+<p>平常在處理應付帳款時，會有「未付資料」和「已付款資料」，如果要確認目前還有哪些款項尚未支付，通常需要再逐筆比對。</p>
+<p>所以我開始想：</p>
+<blockquote>能不能先讓程式幫忙把已付款項排除，只留下真正還需要支付的項目？</blockquote>
+<p>這次我用 Python 與 openpyxl，將未付與已付資料進行比對，把已經付款的項目排除，最後整理出「待付款清單」。</p>
+<p>這樣除了可以比較快速確認目前還有哪些款項尚未支付，也可以進一步彙總待付款金額，作為短期現金需求預估的參考。</p>
+<p>對我來說，這支程式最有意思的地方，不只是「少做一些人工比對」。</p>
+<p>而是把原本工作上的判斷邏輯，一步一步拆解成：</p>
+<blockquote>資料讀取 → 條件比對 → 排除已付款 → 保留待付款</blockquote>
+<p>再讓程式去協助處理重複性的部分。</p>
+<p>其實財務工作裡有很多流程，不一定需要很複雜的系統才能改善。</p>
+<p>有時候只是把日常工作中反覆執行的規則整理清楚，再用適合的工具把它自動化一部分，就能讓後續的確認與判斷更有效率。</p>
+<p>這種從實際工作需求出發，再自己慢慢把邏輯轉成程式的過程，還是很有成就感。😊</p>
+</article>
+<div class="end"><a class="back" href="index.html#posts">← 回到網頁</a></div>
+</main>
+<footer>© <span id="y">2026</span> Nancy</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>

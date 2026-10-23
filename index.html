@@ -98,6 +98,12 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
 .hero-in{display:block;position:relative}
 .hero-in>div{max-width:34em}
 .fields{position:absolute;top:44px;right:24px;width:clamp(90px,14vw,150px);max-width:none;margin:0}
+.posts{display:grid;gap:12px}
+.post-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;text-decoration:none;color:inherit;transition:transform .15s,border-color .15s}
+.post-card:hover{transform:translateY(-2px);border-color:var(--teal)}
+.post-card h3{margin:0 0 4px;font-size:18px;color:var(--teal-deep)}
+.post-card p{margin:0 0 8px;color:var(--muted)}
+.post-card .more{color:var(--teal);font-weight:700;font-size:15px}
 </style>
 </head>
 <body>
@@ -111,6 +117,7 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
         <li><a href="#experience">學經歷</a></li>
         <li><a href="#certs">專業證照</a></li>
         <li><a href="#projects">研究與專題</a></li>
+        <li><a href="#posts">實務改善與觀察</a></li>
         <li><a href="#clubs">社團與志工</a></li>
       </ul>
     </nav>
@@ -122,7 +129,7 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
     <div>
       <h1>Nancy</h1>
       <p class="role">工業工程・數據分析・財務會計・ESG永續</p>
-      <p class="lead">橫跨工業工程、財務會計與資訊管理，擅長以數據分析和流程優化提升營運效率。</p>
+      <p class="lead">以數據為基礎，整合營運、財務與永續管理，協助企業改善流程、提升效率並強化管理決策。</p>
       <div class="btns">
         <a class="btn primary" href="#about">認識我</a>
       </div>
@@ -160,9 +167,28 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
 </div>
     <h3 style="margin:32px 0 12px;font-family:var(--serif);color:var(--teal-deep)">工作經歷</h3>
     <div class="grid2">
-      <div class="card"><h3>財務專員</h3><span class="tag">現職</span></div>
-      <div class="card"><h3>台灣高鐵（THSRC）</h3><p>營運專員</p></div>
-      <div class="card"><h3>環隆電氣（USI）</h3><p>工業工程師（IE）</p></div>
+      <div class="card" style="grid-column:1/-1">
+        <h3>財務專員 <span class="tag" style="margin:0 0 0 8px;vertical-align:middle">現職</span></h3>
+        <p>應付帳款、預算管理、稅務申報、採購審核</p>
+        <p style="margin-top:12px;color:var(--teal-deep);font-weight:700">採購審核與財務流程自動化</p>
+        <ul style="margin:6px 0 0;padding-left:1.2em;color:var(--muted)">
+          <li><strong style="color:var(--ink)">流程改善：</strong>導入條碼機掃描發票，優化發票資料蒐集與核對流程，節省作業工時並提升資料正確性。</li>
+          <li><strong style="color:var(--ink)">程式自動化：</strong>運用 Python 自動對帳，比對發票與申報資料，協助辨識資料差異。</li>
+        </ul>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h3>台灣高鐵（THSRC）</h3>
+        <p style="color:var(--teal-deep);font-weight:700">營運專員</p>
+        <p style="margin-top:6px">維修補給與計畫、預算管理、營運支援、流程與規章審查、採購審核、內部控制、資訊安全與個人資料保護，以及跨部門協調。</p>
+      </div>
+      <div class="card" style="grid-column:1/-1">
+        <h3>環隆電氣（USI）</h3>
+        <p style="color:var(--teal-deep);font-weight:700">工業工程師（IE）</p>
+        <ul style="margin:6px 0 0;padding-left:1.2em;color:var(--muted)">
+          <li><strong style="color:var(--ink)">專案與流程改善：</strong>專案改善、提案改善。</li>
+          <li><strong style="color:var(--ink)">教育訓練與人才培育：</strong>第一線人員技能訓練規劃、種子人員訓練規劃、內部講師。</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -187,6 +213,28 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
         <li>ISO 9000 金融業之應用</li>
       </ul></td></tr>
     </table></div>
+  </section>
+
+  <section id="posts">
+    <h2>實務改善與觀察</h2>
+    <p class="about-text" style="margin-bottom:20px">整合工業工程、數據分析、財務會計與 ESG 永續，探索不同專業在企業營運中的應用。</p>
+    <div class="posts">
+      <a class="post-card" href="ap-automation.html">
+        <h3>財務流程自動化：Python 與 openpyxl 待付款清單整理</h3>
+        <p>把未付與已付資料比對，排除已付款項，整理出待付款清單。</p>
+        <span class="more">閱讀全文 →</span>
+      </a>
+      <a class="post-card" href="erp-barcode.html">
+        <h3>ERP 流程改善：條碼掃描與發票資料輸入</h3>
+        <p>用二維條碼掃描器把發票資料直接掃進 ERP，減少人工輸入。</p>
+        <span class="more">閱讀全文 →</span>
+      </a>
+      <a class="post-card" href="carbon-footprint.html">
+        <h3>ESG 數據觀察：旅運碳足跡、分攤排放與邊際排放</h3>
+        <p>車票上的「每人碳足跡」代表什麼？分攤排放與邊際排放有什麼不同。</p>
+        <span class="more">閱讀全文 →</span>
+      </a>
+    </div>
   </section>
 
   <section id="clubs">
