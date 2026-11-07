@@ -115,6 +115,7 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
   nav a{white-space:nowrap;padding:6px 12px;font-size:15px}
 }
 </style>
+<link rel="stylesheet" href="./nancy-chat/widget.css">
 </head>
 <body>
 
@@ -313,5 +314,11 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
 
 <footer>© <span id="y">2026</span> Nancy</footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<button id="nancy-chat-launcher" type="button" aria-controls="nancy-chat-panel" aria-expanded="false"><img src="./nancy-chat/nancy.webp" alt="" width="48" height="48"><span>問 Nancy</span></button>
+<section id="nancy-chat-panel" aria-labelledby="nancy-chat-title" hidden>
+  <header><span id="nancy-chat-title">Nancy AI 小幫手</span><button type="button" aria-label="關閉聊天">×</button></header>
+  <iframe title="Nancy 客服對話"></iframe>
+</section>
+<script src="./nancy-chat/widget.js"></script>
 </body>
 </html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nancy AI 小幫手</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#25364c;font:16px system-ui}main{height:100dvh;display:flex;flex-direction:column;padding:12px;gap:10px}#log{flex:1;overflow:auto;min-height:0}p{white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 8px;padding:8px 10px;border-radius:10px;background:#eef3f8}p.user{background:#e4eeff}form,.actions{display:flex;gap:6px}.actions{flex-wrap:wrap}input{flex:1;min-width:0;border:1px solid #76859b;border-radius:8px;padding:8px;font:inherit}button{border:0;border-radius:8px;padding:8px;background:#244263;color:white;font:inherit;cursor:pointer}button:disabled{opacity:.6}#status{font-size:.875rem;min-height:1.3em}
+</style>
+<main>
+  <div id="log" role="log" aria-label="聊天記錄"></div>
+  <div class="actions">
+    <button type="button" data-question="有哪些作品？">有哪些作品？</button>
+    <button type="button" data-question="想看旅遊互動作品">旅遊作品</button>
+    <button type="button" id="clear">清除對話</button>
+  </div>
+  <div id="status" role="status"></div>
+  <form><input aria-label="輸入問題" maxlength="500" required placeholder="輸入你的問題"><button type="submit">送出</button></form>
+</main>
+<script>
+const log = document.querySelector('#log');
+const chatStatus = document.querySelector('#status');
+const form = document.querySelector('form');
+const input = form.querySelector('input');
+const buttons = document.querySelectorAll('button');
+const chatHistory = [];
+let busy = false;
+
+function addMessage(role, content) {
+  const entry = document.createElement('p');
+  entry.className = role;
+  entry.textContent = (role === 'user' ? '你：' : 'Nancy：') + content;
+  log.append(entry);
+  log.scrollTop = log.scrollHeight;
+}
+function reset() {
+  chatHistory.length = 0;
+  log.replaceChildren();
+  input.value = '';
+  chatStatus.textContent = '';
+  addMessage('assistant', '嗨，我是 Nancy 的 AI 小幫手！你想了解哪個作品？');
+}
+function ask(question) {
+  if (busy || !question.trim()) return;
+  busy = true;
+  buttons.forEach(button => button.disabled = true);
+  input.readOnly = true;
+  input.value = question;
+  chatStatus.textContent = '送出中…';
+
+  function finish(result) {
+    busy = false;
+    buttons.forEach(button => button.disabled = false);
+    input.readOnly = false;
+    if (result.reply) {
+      addMessage('user', question);
+      addMessage('assistant', result.reply);
+      chatHistory.push({role: 'user', content: question}, {role: 'assistant', content: result.reply});
+      if (chatHistory.length > 6) chatHistory.splice(0, 2);
+      input.value = '';
+      chatStatus.textContent = '';
+    } else {
+      chatStatus.textContent = result.error + ' 可按送出重試。';
+    }
+  }
+
+  if (typeof google === 'undefined' || !google.script?.run) {
+    finish({reply: '【介面預覽】你可以從首頁找到島遊趣、碳足跡和流程自動化作品。'});
+    return;
+  }
+  google.script.run.withSuccessHandler(finish)
+    .withFailureHandler(() => finish({error: '目前無法連線。'}))
+    .sendChat(chatHistory, question);
+}
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  ask(input.value.trim());
+});
+document.querySelectorAll('[data-question]').forEach(button =>
+  button.addEventListener('click', () => ask(button.dataset.question)));
+document.querySelector('#clear').addEventListener('click', reset);
+reset();
+</script>
+</html>
