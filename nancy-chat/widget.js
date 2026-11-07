@@ -1,6 +1,6 @@
 (() => {
   // Paste the deployed Google Apps Script /exec URL here.
-  const webAppUrl = '';
+  const webAppUrl = 'https://script.google.com/macros/s/AKfycbzHCSzX5c7VgfqlO4ZyVRxtdBTeYZqCXx2Pmf5m0Ukweg7gEeSBfjtSPBa0yHRjK-fY0A/exec';
   const launcher = document.querySelector('#nancy-chat-launcher');
   const panel = document.querySelector('#nancy-chat-panel');
   const close = panel.querySelector('button');
