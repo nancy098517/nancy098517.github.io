@@ -118,13 +118,15 @@ el('results').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function switchMode(next){
 mode=next;document.querySelectorAll('[data-nancy-mode]').forEach(function(b){var active=b.dataset.nancyMode===next;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});
-el('play').disabled=next!=='day';
+el('play').disabled=false;
+el('play').textContent=next==='day'?'▶ 開始營業（5秒＝1小時）':next==='week'?'▶ 開始營業（連續7天）':'▶ 開始營業（連續30天）';
 el('instant').textContent=next==='day'?'📊 直接看營業結果':next==='week'?'📊 開始連續營運一週':'📊 開始連續營運一個月';
 el('nancyModeNote').textContent=next==='day'?'本日可觀看5秒＝1小時動畫，或直接看結果。':next==='week'?'本週連續模擬7天，可按日查看營業小時營收與人力配置。':'本月連續模擬30天，可按日查看營業小時營收與人力配置。';
 el('results').hidden=true;el('nancyCharts').hidden=true;el('again').disabled=true;
 }
 document.querySelectorAll('[data-nancy-mode]').forEach(function(b){b.addEventListener('click',function(){switchMode(b.dataset.nancyMode)})});
 el('nancyDaySelect').addEventListener('change',renderGraphs);
+el('play').addEventListener('click',function(e){if(mode==='day')return;e.stopImmediatePropagation();showMulti()},true);
 el('instant').addEventListener('click',function(e){if(mode==='day')return;e.stopImmediatePropagation();showMulti()},true);
 el('again').addEventListener('click',function(e){if(mode==='day')return;e.stopImmediatePropagation();showMulti()},true);
 })();
