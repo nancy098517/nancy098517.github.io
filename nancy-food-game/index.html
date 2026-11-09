@@ -24,8 +24,38 @@
 .nancy-chart-card h4{margin:0 0 9px}.nancy-chart-scroll{overflow-x:auto;max-width:100%}
 .nancy-chart-scroll svg{display:block;width:100%;min-width:460px;height:auto}
 #nancyDaySelect{width:100%;padding:10px;border:1px solid #cbdccf;border-radius:9px}
+
+/* 手機觸控與窄螢幕版面調整：僅 CSS，不變更模擬邏輯 */
+@media(max-width:740px){
+  body{overflow-x:hidden}
+  main{width:100%;padding:12px 10px 48px}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .card{min-width:0;padding:14px}
+  .twos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .field input,.field select{min-width:0;max-width:100%;min-height:46px;font-size:16px}
+  .btns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .btns button{width:100%;min-width:0;min-height:48px;white-space:normal;line-height:1.35}
+  .nancy-mode button{min-height:46px;font-size:16px}
+  .nancy-chart-card{min-width:0;padding:11px}
+  .nancy-chart-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .nancy-chart-scroll svg{width:auto;max-width:none;min-width:460px;min-height:205px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi{min-width:0;padding:10px}
+  .kpi strong{font-size:1.06rem;overflow-wrap:anywhere}
+  .scene{width:100%;max-width:100%}
+}
+@media(max-width:400px){
+  .twos{gap:7px}
+  .btns{grid-template-columns:1fr}
+  .scene{height:290px}
+  .wall{right:5px;padding:5px 7px;font-size:11px}
+  .menu-board{left:44%;font-size:10px}
+  .table{width:64px;height:54px;font-size:18px;line-height:35px}
+  .t1,.t3{left:20%}.t2,.t4{left:51%}
+  .counter{right:5px;width:102px}
+}
 </style></head><body>
-<header><div><h1>🍜 南西小吃｜一日店長</h1><p>從開店到打烊，看懂營收、人力與成本</p></div><span class="pill">免費經營遊戲 V0.8.2</span></header>
+<header><div><h1>🍜 南西小吃｜一日店長</h1><p>從開店到打烊，看懂營收、人力與成本</p></div><span class="pill">免費經營遊戲 V0.8.3</span></header>
 <main><div class="grid">
 <section class="card"><h2>⚙️ 本日／本週／本月怎麼經營？</h2><div class="nancy-mode"><button type="button" class="active" data-nancy-mode="day">本日</button><button type="button" data-nancy-mode="week">本週</button><button type="button" data-nancy-mode="month">本月</button></div><p class="tiny" id="nancyModeNote">預設本日，可播放營業動畫或直接查看結果。</p><div class="twos"><div class="field"><label for="start">開店時間</label><select id="start"></select></div><div class="field"><label for="end">打烊時間</label><select id="end"></select></div></div>
 <div class="twos"><div class="field"><label for="tables">店內桌數</label><input id="tables" type="number" min="1" max="60" value="8"></div><div class="field"><label for="reserved">已預訂人數</label><input id="reserved" type="number" min="0" value="12"></div></div>
