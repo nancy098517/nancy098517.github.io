@@ -25,7 +25,7 @@
 .nancy-chart-scroll svg{display:block;width:100%;min-width:460px;height:auto}
 #nancyDaySelect{width:100%;padding:10px;border:1px solid #cbdccf;border-radius:9px}
 </style></head><body>
-<header><div><h1>🍜 南西小吃｜一日店長</h1><p>從開店到打烊，看懂營收、人力與成本</p></div><span class="pill">免費經營遊戲 V0.6 修正版</span></header>
+<header><div><h1>🍜 南西小吃｜一日店長</h1><p>從開店到打烊，看懂營收、人力與成本</p></div><span class="pill">免費經營遊戲 V0.7</span></header>
 <main><div class="grid">
 <section class="card"><h2>⚙️ 本日／本週／本月怎麼經營？</h2><div class="nancy-mode"><button type="button" class="active" data-nancy-mode="day">本日</button><button type="button" data-nancy-mode="week">本週</button><button type="button" data-nancy-mode="month">本月</button></div><p class="tiny" id="nancyModeNote">預設本日，可播放營業動畫或直接查看結果。</p><div class="twos"><div class="field"><label for="start">開店時間</label><select id="start"></select></div><div class="field"><label for="end">打烊時間</label><select id="end"></select></div></div>
 <div class="twos"><div class="field"><label for="tables">店內桌數</label><input id="tables" type="number" min="1" max="60" value="8"></div><div class="field"><label for="reserved">已預訂人數</label><input id="reserved" type="number" min="0" value="12"></div></div>
@@ -33,7 +33,7 @@
 <div class="twos"><div class="field"><label for="staff">離峰員工數</label><input id="staff" type="number" min="0" value="3"></div><div class="field"><label for="wage">員工每小時成本</label><input id="wage" type="number" min="0" value="200"></div></div>
 <div class="twos"><div class="field"><label for="peakStaff">尖峰員工數</label><input id="peakStaff" type="number" min="0" value="5"></div><div class="field"><label for="food">食材成本率 %</label><input id="food" type="number" min="0" max="100" value="35"></div><div class="field"><label for="utilities">每小時水電費</label><input id="utilities" type="number" min="0" value="65"></div></div>
 <div class="field"><label><input id="sound" type="checkbox" checked style="width:auto"> 收銀音效（叮！）</label></div>
-<div class="btns"><button id="play">▶ 開始營業（5秒＝1小時）</button><button id="instant" class="secondary">📊 直接看營業結果</button></div><p class="tiny">使用虛構資料，僅供經營模擬。實際成本與工時須依企業資料及法規核算。</p></section>
+<div class="field"><label for="speed">玩家選擇動畫速度</label><select id="speed"><option value="3000" selected>3 秒＝1 小時（預設）</option><option value="1000">1 秒＝1 小時</option><option value="5000">5 秒＝1 小時</option><option value="day">3 秒＝1 天（週／月快速）</option></select></div><div class="btns"><button id="play">▶ 開始營業動畫</button><button id="instant" class="secondary">📊 直接看營業結果</button></div><p class="tiny">使用虛構資料，僅供經營模擬。實際成本與工時須依企業資料及法規核算。</p></section>
 <section class="card"><h2>🏠 餐廳營業現場 <span id="clock" style="float:right">10:00</span></h2><div class="scene" aria-label="餐廳動畫場景"><div class="window"></div><div class="lamp lamp1"></div><div class="lamp lamp2"></div><div class="menu-board">🍜 今日推薦<br><small>🥢 小吃套餐　🍰 甜點</small></div><div class="plant">🌿</div><div class="wall">南西小吃 🍱</div><div class="kitchen">👩‍🍳 廚房</div><div class="door"></div><div class="counter">🍲 <span id="register">💰</span></div><div class="table t1" id="t1">🪑</div><div class="table t2" id="t2">🪑</div><div class="table t3" id="t3">🪑</div><div class="table t4" id="t4">🪑</div><div class="person" id="customer">🚶</div><div class="person" id="waiter">🧑‍🍳</div><div class="person" id="chef">👨‍🍳</div><div class="person" id="cashier">🧾</div><div class="overlay" id="cover"><div><h3>歡迎當店長！</h3><p>設定人力、桌數、預訂及營業時間<br>觀察客人進店、出餐與結帳</p></div></div></div>
 <div class="status"><div class="stat"><small>目前營收</small><b id="revenue">$0</b></div><div class="stat"><small>已接待人數</small><b id="guests">0 人</b></div><div class="stat"><small>營業進度</small><b id="progressText">0%</b></div></div><div class="progress"><div id="progressBar" style="width:0%"></div></div><div class="cash" id="cash"></div><p id="log" aria-live="polite">準備開店...</p><div class="btns"><button class="secondary" id="skip" disabled>⏭ 跳過動畫</button><button class="secondary" id="again" disabled>↻ 再模擬一天</button></div></section>
 </div>
@@ -47,7 +47,7 @@ function sound(){if(!$('sound').checked)return;try{audio=audio||new (window.Audi
 function animate(id,cls){const el=$(id);el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls)}
 function tick(visual){const row=state.rows[state.completed],demand=row.reserved+row.walk,accepted=Math.min(demand,state.capacity),lost=demand-accepted,earned=accepted*state.price;state.served+=accepted;state.lost+=lost;state.gross+=earned;const assigned=((row.hour>=11&&row.hour<14)||(row.hour>=17&&row.hour<20))?n("peakStaff"):state.staff;state.laborTotal+=assigned*state.wage;state.hourData.push({hour:row.hour,revenue:earned,staff:assigned});state.completed++;if(visual){$('cover').hidden=true;$('clock').textContent=String(row.hour).padStart(2,'0')+':00';$('revenue').textContent='$'+fmt(state.gross);$('guests').textContent=state.served+' 人';$('progressText').textContent=Math.round(state.completed/state.H*100)+'%';$('progressBar').style.width=state.completed/state.H*100+'%';$('cash').textContent='叮！本時段結帳 +$'+fmt(earned);$('log').textContent='🕒 '+row.hour+':00　預訂 '+row.reserved+' 人、散客 '+row.walk+' 人，接待 '+accepted+' 人'+(lost?'，客滿流失 '+lost+' 人':'');for(let i=1;i<=4;i++){$('t'+i).textContent=accepted>0?(i<=Math.ceil(accepted/4)?'🍽️👥':'🪑'):'🪑';$('t'+i).classList.toggle('full',i<=Math.ceil(accepted/4));}animate('customer','move-customer');animate('waiter','move-waiter');animate('chef','cook');animate('register','ring');if(earned>0)sound();}}
 function finish(){clearInterval(timer);timer=null;$('skip').disabled=true;$('again').disabled=false;const labor=state.laborTotal,food=state.gross*state.food,power=state.utilities*state.H,other=900,expense=labor+food+power+other,profit=state.gross-expense,rate=state.gross?labor/state.gross:0;const ks=[['營業收入','$'+fmt(state.gross)],['接待人數',state.served+' 人'],['未接待人數',state.lost+' 人'],['食材成本','$'+fmt(food)],['人事成本','$'+fmt(labor)],['水電費','$'+fmt(power)],['其他費用','$'+fmt(other)],['模擬營業餘額','$'+fmt(profit)]];$('kpis').replaceChildren(...ks.map(([key,val])=>{const x=document.createElement('div');x.className='kpi';const s=document.createElement('small');s.textContent=key;const b=document.createElement('strong');b.textContent=val;x.append(s,b);return x}));const messages=[];if(rate>.3)messages.push('人事費用率約 '+(rate*100).toFixed(1)+'%，可比較尖峰和離峰的排班效率。');if(state.food>.35)messages.push('食材成本率較高，可檢查配方、採購、損耗與售價。');if(state.lost)messages.push('因接待容量限制流失 '+state.lost+' 人，可評估候位、翻桌或外帶服務。');if(profit<0)messages.push('本次模擬虧損，可比較減少閒置工時、調整菜單或提升營收的效果。');if(!messages.length)messages.push('本次經營表現穩定，可繼續比較不同客數與人力情境。');$('advice').replaceChildren(...messages.map(m=>{const p=document.createElement('p');p.textContent='• '+m;return p}));$('results').hidden=false;if(window.nancyDayGraph)window.nancyDayGraph(state);$('clock').textContent='打烊';$('cash').textContent='今日結帳完成：$'+fmt(state.gross);$('log').textContent='✅ 今日營業結束，請查看下方成績單。';$('results').scrollIntoView({behavior:'smooth',block:'start'});}
-function run(instant){if(timer)clearInterval(timer);state=setup();$('results').hidden=true;$('again').disabled=true;$('skip').disabled=instant;$('cover').hidden=true;$('cash').textContent='';$('progressBar').style.width='0%';$('progressText').textContent='0%';$('revenue').textContent='$0';$('guests').textContent='0 人';$('clock').textContent=String(n('start')).padStart(2,'0')+':00';for(let i=1;i<=4;i++){$('t'+i).textContent='🪑';$('t'+i).classList.remove('full')}if(instant){while(state.completed<state.H)tick(false);finish();return}tick(true);$('skip').disabled=false;if(state.completed>=state.H){finish();return}timer=setInterval(()=>{tick(true);if(state.completed>=state.H)finish()},5000)}
+function run(instant){if(timer)clearInterval(timer);state=setup();$('results').hidden=true;$('again').disabled=true;$('skip').disabled=instant;$('cover').hidden=true;$('cash').textContent='';$('progressBar').style.width='0%';$('progressText').textContent='0%';$('revenue').textContent='$0';$('guests').textContent='0 人';$('clock').textContent=String(n('start')).padStart(2,'0')+':00';for(let i=1;i<=4;i++){$('t'+i).textContent='🪑';$('t'+i).classList.remove('full')}if(instant){while(state.completed<state.H)tick(false);finish();return}tick(true);$('skip').disabled=false;if(state.completed>=state.H){finish();return}timer=setInterval(()=>{tick(true);if(state.completed>=state.H)finish()},$('speed').value==='day'?3000:Number($('speed').value))}
 $('play').addEventListener('click',()=>run(false));$('instant').addEventListener('click',()=>run(true));$('skip').addEventListener('click',()=>{if(!state)return;while(state.completed<state.H)tick(false);finish()});$('again').addEventListener('click',()=>run(false));window.addEventListener('pagehide',()=>clearInterval(timer));})();
 </script>
 <script>
@@ -103,8 +103,8 @@ if(mode!=='day')return;
 el('nancyResultLabel').textContent='本日';
 setData([{label:'本日',rows:state.hourData,gross:state.gross,labor:state.laborTotal}]);
 };
-function showMulti(){
-simDays=Array.from({length:mode==='week'?7:30},function(_,i){return simulateDay(i)});
+function showMulti(prebuilt){
+simDays=prebuilt||Array.from({length:mode==='week'?7:30},function(_,i){return simulateDay(i)});
 var sum={gross:0,labor:0,served:0,lost:0,food:0,water:0,other:0,profit:0};
 simDays.forEach(function(d){Object.keys(sum).forEach(function(k){sum[k]+=d[k]})});
 el('nancyResultLabel').textContent=mode==='week'?'本週':'本月';
@@ -117,17 +117,47 @@ el('clock').textContent='結算完成';el('log').textContent='✅ 已完成 '+si
 el('results').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function switchMode(next){
-mode=next;document.querySelectorAll('[data-nancy-mode]').forEach(function(b){var active=b.dataset.nancyMode===next;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});
+stopNancy();mode=next;document.querySelectorAll('[data-nancy-mode]').forEach(function(b){var active=b.dataset.nancyMode===next;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});
 el('play').disabled=false;
-el('play').textContent=next==='day'?'▶ 開始營業（5秒＝1小時）':next==='week'?'▶ 開始營業（連續7天）':'▶ 開始營業（連續30天）';
+el('play').textContent=next==='day'?'▶ 開始本日營業動畫':next==='week'?'▶ 開始本週連續營業動畫':'▶ 開始本月連續營業動畫';
 el('instant').textContent=next==='day'?'📊 直接看營業結果':next==='week'?'📊 開始連續營運一週':'📊 開始連續營運一個月';
-el('nancyModeNote').textContent=next==='day'?'本日可觀看5秒＝1小時動畫，或直接看結果。':next==='week'?'本週連續模擬7天，可按日查看營業小時營收與人力配置。':'本月連續模擬30天，可按日查看營業小時營收與人力配置。';
+el('nancyModeNote').textContent=next==='day'?'本日：選擇動畫速度，或直接看結果。':next==='week'?'本週：可逐小時或逐日播放7天。':'本月：可逐小時或逐日播放30天。';
 el('results').hidden=true;el('nancyCharts').hidden=true;el('again').disabled=true;
 }
 document.querySelectorAll('[data-nancy-mode]').forEach(function(b){b.addEventListener('click',function(){switchMode(b.dataset.nancyMode)})});
 el('nancyDaySelect').addEventListener('change',renderGraphs);
-el('play').addEventListener('click',function(e){if(mode==='day')return;e.stopImmediatePropagation();showMulti()},true);
+
+var nancyTimer=null,nancyList=null,nancyPos=0,nancyTotal=0,nancyRevenue=0,nancyGuests=0;
+function stopNancy(){if(nancyTimer!==null)clearInterval(nancyTimer);nancyTimer=null;el('speed').disabled=false}
+function playNancy(){
+ stopNancy();nancyList=Array.from({length:mode==='week'?7:30},function(_,i){return simulateDay(i)});
+ nancyPos=0;nancyRevenue=0;nancyGuests=0;
+ var byDay=el('speed').value==='day',dailyHours=nancyList[0].rows.length;
+ nancyTotal=nancyList.length*(byDay?1:dailyHours);
+ el('results').hidden=true;el('nancyCharts').hidden=true;el('cover').hidden=true;
+ el('play').disabled=true;el('instant').disabled=true;el('again').disabled=true;el('skip').disabled=false;el('speed').disabled=true;
+ el('progressBar').style.width='0%';el('progressText').textContent='0%';el('revenue').textContent=format(0);el('guests').textContent='0 人';
+ function frame(){
+  var day,part,row;
+  if(byDay){day=nancyList[nancyPos];part=day.rows[day.rows.length-1];nancyRevenue+=day.gross;nancyGuests+=day.served;el('cash').textContent='叮！本日營收 +'+format(day.gross)}
+  else{day=nancyList[Math.floor(nancyPos/dailyHours)];row=day.rows[nancyPos%dailyHours];part=row;nancyRevenue+=row.revenue;nancyGuests+=row.people;el('cash').textContent='叮！本時段營收 +'+format(row.revenue)}
+  el('clock').textContent=day.label+' '+(byDay?'打烊':String(part.hour).padStart(2,'0')+':00');
+  el('revenue').textContent=format(nancyRevenue);el('guests').textContent=nancyGuests+' 人';
+  el('log').textContent=day.label+(byDay?'營業完成':part.hour+':00')+'，累積營收 '+format(nancyRevenue);
+  for(var j=1;j<=4;j++){var full=byDay?day.served>0:part.people>0&&j<=Math.ceil(part.people/4);el('t'+j).textContent=full?'🍽️👥':'🪑';el('t'+j).classList.toggle('full',full)}
+  ['customer','waiter','chef','register'].forEach(function(id){var classes={customer:'move-customer',waiter:'move-waiter',chef:'cook',register:'ring'};var item=el(id);item.classList.remove(classes[id]);void item.offsetWidth;item.classList.add(classes[id])});
+  nancyPos++;var pct=Math.round(nancyPos/nancyTotal*100);el('progressText').textContent=pct+'%';el('progressBar').style.width=pct+'%';
+  if(nancyPos>=nancyTotal){finishNancy()}
+ }
+ function finishNancy(){stopNancy();el('play').disabled=false;el('instant').disabled=false;showMulti(nancyList)}
+ frame();
+ if(nancyPos<nancyTotal)nancyTimer=setInterval(frame,byDay?3000:Number(el('speed').value));
+ window.nancyStopPlayback=function(){if(nancyTimer===null)return;finishNancy()};
+}
+
+el('play').addEventListener('click',function(e){if(mode==='day')return;e.stopImmediatePropagation();playNancy()},true);
+el('skip').addEventListener('click',function(e){if(nancyTimer===null)return;e.stopImmediatePropagation();stopNancy();el('play').disabled=false;el('instant').disabled=false;showMulti(nancyList)},true);
 el('instant').addEventListener('click',function(e){if(mode==='day')return;e.stopImmediatePropagation();showMulti()},true);
-el('again').addEventListener('click',function(e){if(mode==='day')return;e.stopImmediatePropagation();showMulti()},true);
+el('again').addEventListener('click',function(e){if(mode==='day')return;e.stopImmediatePropagation();playNancy()},true);
 })();
 </script></body></html>
