@@ -19,13 +19,13 @@
 .nancy-mode{display:flex;gap:5px;padding:5px;border-radius:12px;background:#eaf1eb;margin:0 0 9px}
 .nancy-mode button{flex:1;padding:10px 4px;background:transparent;color:#335a45}
 .nancy-mode button.active{background:#286e58;color:white}
-.nancy-charts{margin-top:20px}.nancy-charts[hidden],#nancyDaySelectWrap[hidden]{display:none}
+.nancy-charts{margin-top:20px}.nancy-charts[hidden],#nancyDaySelectWrap[hidden],#nancyMonthPicker[hidden]{display:none}
 .nancy-chart-card{padding:14px;background:#fcfdfa;border:1px solid #dae6da;border-radius:14px;margin:12px 0}
 .nancy-chart-card h4{margin:0 0 9px}.nancy-chart-scroll{overflow-x:auto;max-width:100%}
 .nancy-chart-scroll svg{display:block;width:100%;min-width:460px;height:auto}
 #nancyDaySelect{width:100%;padding:10px;border:1px solid #cbdccf;border-radius:9px}
 </style></head><body>
-<header><div><h1>🍜 南西小吃｜一日店長</h1><p>從開店到打烊，看懂營收、人力與成本</p></div><span class="pill">免費經營遊戲 V0.8</span></header>
+<header><div><h1>🍜 南西小吃｜一日店長</h1><p>從開店到打烊，看懂營收、人力與成本</p></div><span class="pill">免費經營遊戲 V0.8.1</span></header>
 <main><div class="grid">
 <section class="card"><h2>⚙️ 本日／本週／本月怎麼經營？</h2><div class="nancy-mode"><button type="button" class="active" data-nancy-mode="day">本日</button><button type="button" data-nancy-mode="week">本週</button><button type="button" data-nancy-mode="month">本月</button></div><p class="tiny" id="nancyModeNote">預設本日，可播放營業動畫或直接查看結果。</p><div class="twos"><div class="field"><label for="start">開店時間</label><select id="start"></select></div><div class="field"><label for="end">打烊時間</label><select id="end"></select></div></div>
 <div class="twos"><div class="field"><label for="tables">店內桌數</label><input id="tables" type="number" min="1" max="60" value="8"></div><div class="field"><label for="reserved">已預訂人數</label><input id="reserved" type="number" min="0" value="12"></div></div>
@@ -37,7 +37,7 @@
 <section class="card"><h2>🏠 餐廳營業現場 <span id="clock" style="float:right">10:00</span></h2><div class="scene" aria-label="餐廳動畫場景"><div class="window"></div><div class="lamp lamp1"></div><div class="lamp lamp2"></div><div class="menu-board">🍜 今日推薦<br><small>🥢 小吃套餐　🍰 甜點</small></div><div class="plant">🌿</div><div class="wall">南西小吃 🍱</div><div class="kitchen">👩‍🍳 廚房</div><div class="door"></div><div class="counter">🍲 <span id="register">💰</span></div><div class="table t1" id="t1">🪑</div><div class="table t2" id="t2">🪑</div><div class="table t3" id="t3">🪑</div><div class="table t4" id="t4">🪑</div><div class="person" id="customer">🚶</div><div class="person" id="waiter">🧑‍🍳</div><div class="person" id="chef">👨‍🍳</div><div class="person" id="cashier">🧾</div><div class="overlay" id="cover"><div><h3>歡迎當店長！</h3><p>設定人力、桌數、預訂及營業時間<br>觀察客人進店、出餐與結帳</p></div></div></div>
 <div class="status"><div class="stat"><small>目前營收</small><b id="revenue">$0</b></div><div class="stat"><small>已接待人數</small><b id="guests">0 人</b></div><div class="stat"><small>營業進度</small><b id="progressText">0%</b></div></div><div class="progress"><div id="progressBar" style="width:0%"></div></div><div class="cash" id="cash"></div><p id="log" aria-live="polite">準備開店...</p><div class="btns"><button class="secondary" id="skip" disabled>⏭ 跳過動畫</button><button class="secondary" id="again" disabled>↻ 再模擬一天</button></div></section>
 </div>
-<section class="card" id="results" hidden style="margin-top:18px"><h2>📈 <span id="nancyResultLabel">本日</span>營業成績單</h2><div class="kpis" id="kpis"></div><div class="nancy-charts" id="nancyCharts" hidden><h3>📊 營收與人力配置圖表</h3><div class="field" id="nancyDaySelectWrap" hidden><label for="nancyDaySelect">選擇營業日</label><select id="nancyDaySelect"></select></div><div class="nancy-chart-card"><h4 id="nancyTrendLabel">營收趨勢</h4><div class="nancy-chart-scroll" id="nancyTrend"></div></div><div class="nancy-chart-card"><h4>選定日期：各營業小時營收</h4><div class="nancy-chart-scroll" id="nancyHourRevenue"></div></div><div class="nancy-chart-card"><h4>選定日期：各營業小時排班人數</h4><div class="nancy-chart-scroll" id="nancyHourStaff"></div></div><div class="nancy-chart-card"><h4>本期成本與費用結構：食材、人事、水電、租金、其他</h4><div class="nancy-chart-scroll" id="nancyCosts"></div></div></div><h3>經營觀察</h3><div id="advice" class="advice"></div><div class="advisor"><h3>💼 想改善真實企業的經營績效？</h3><p>遊戲提供初步管理觀念。如果你想進一步分析菜單成本、人力配置、採購、庫存、水電或獲利，可以了解 Nancy顧問的經營管理與成本分析服務。</p><a href="https://nancy098517.github.io/" target="_blank" rel="noopener noreferrer">認識 Nancy</a><p class="tiny">本結果為模擬，不構成個別企業專業診斷；本遊戲不會上傳薪資或營業資料。</p></div></section>
+<section class="card" id="results" hidden style="margin-top:18px"><h2>📈 <span id="nancyResultLabel">本日</span>營業成績單</h2><div class="kpis" id="kpis"></div><div class="nancy-charts" id="nancyCharts" hidden><h3>📊 營收與人力配置圖表</h3><div class="field" id="nancyDaySelectWrap" hidden><label for="nancyDaySelect">選擇營業日</label><select id="nancyDaySelect"></select></div><div id="nancyMonthPicker" hidden><div class="twos"><div class="field"><label for="nancyMonthWeek">選擇週次</label><select id="nancyMonthWeek"></select></div><div class="field"><label for="nancyMonthDay">選擇該週日期</label><select id="nancyMonthDay"></select></div></div></div><div class="nancy-chart-card"><h4 id="nancyTrendLabel">營收趨勢</h4><div class="nancy-chart-scroll" id="nancyTrend"></div></div><div class="nancy-chart-card"><h4>選定日期：各營業小時營收</h4><div class="nancy-chart-scroll" id="nancyHourRevenue"></div></div><div class="nancy-chart-card"><h4>選定日期：各營業小時排班人數</h4><div class="nancy-chart-scroll" id="nancyHourStaff"></div></div><div class="nancy-chart-card"><h4>本期成本與費用結構：食材、人事、水電、租金、其他</h4><div class="nancy-chart-scroll" id="nancyCosts"></div></div></div><h3>經營觀察</h3><div id="advice" class="advice"></div><div class="advisor"><h3>💼 想改善真實企業的經營績效？</h3><p>遊戲提供初步管理觀念。如果你想進一步分析菜單成本、人力配置、採購、庫存、水電或獲利，可以了解 Nancy顧問的經營管理與成本分析服務。</p><a href="https://nancy098517.github.io/" target="_blank" rel="noopener noreferrer">認識 Nancy</a><p class="tiny">本結果為模擬，不構成個別企業專業診斷；本遊戲不會上傳薪資或營業資料。</p></div></section>
 <footer>南西小吃・一日店長｜純前端互動遊戲・可於 GitHub Pages 使用</footer>
 </main>
 <script>
@@ -95,8 +95,14 @@ var costTotals=simDays.reduce(function(a,x){for(var k of ['food','labor','water'
 }
 function setData(data){
 simDays=data;
-el('nancyDaySelectWrap').hidden=data.length===1;
+el('nancyDaySelectWrap').hidden=data.length===1||mode==='month';
+el('nancyMonthPicker').hidden=mode!=='month'||data.length<=1;
 el('nancyDaySelect').replaceChildren(...data.map(function(d,i){var opt=document.createElement('option');opt.value=i;opt.textContent=d.label||'本日';return opt}));
+if(mode==='month'&&data.length>1){
+var weeks=Math.ceil(data.length/7);
+el('nancyMonthWeek').replaceChildren(...Array.from({length:weeks},function(_,i){var opt=document.createElement('option');opt.value=i;opt.textContent='第'+(i+1)+'週（'+(i*7+1)+'–'+Math.min((i+1)*7,data.length)+'日）';return opt}));
+fillMonthDays();
+}
 el('nancyCharts').hidden=false;renderGraphs();
 }
 window.nancyDayGraph=function(state){
@@ -127,6 +133,13 @@ el('results').hidden=true;el('nancyCharts').hidden=true;el('again').disabled=tru
 }
 document.querySelectorAll('[data-nancy-mode]').forEach(function(b){b.addEventListener('click',function(){switchMode(b.dataset.nancyMode)})});
 el('nancyDaySelect').addEventListener('change',renderGraphs);
+function fillMonthDays(){
+ var week=Number(el('nancyMonthWeek').value)||0,begin=week*7,end=Math.min(begin+7,simDays.length);
+ el('nancyMonthDay').replaceChildren(...Array.from({length:end-begin},function(_,i){var o=document.createElement('option');o.value=begin+i;o.textContent=simDays[begin+i].label;return o}));
+ el('nancyDaySelect').value=String(begin);renderGraphs();
+}
+el('nancyMonthWeek').addEventListener('change',fillMonthDays);
+el('nancyMonthDay').addEventListener('change',function(){el('nancyDaySelect').value=el('nancyMonthDay').value;renderGraphs()});
 
 var nancyTimer=null,nancyList=null,nancyPos=0,nancyTotal=0,nancyRevenue=0,nancyGuests=0;
 
