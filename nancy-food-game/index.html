@@ -54,7 +54,7 @@ $('play').addEventListener('click',()=>run(false));$('instant').addEventListener
 (function(){
 'use strict';
 var mode='day',simDays=[];
-var el=function(id){return document.getElementById(id)},num=function(id){return Math.max(0,Number(el(id).value)||0)},format=function(v){return '+Math.round(v).toLocaleString('zh-TW')};
+var el=function(id){return document.getElementById(id)},num=function(id){return Math.max(0,Number(el(id).value)||0)},format=function(v){return String.fromCharCode(36)+Math.round(v).toLocaleString('zh-TW')};
 var dayNames=['週一','週二','週三','週四','週五','週六','週日'];
 function startHour(){return num('start')}
 function hourCount(){return ((num('end')-num('start')+24)%24)||24}
