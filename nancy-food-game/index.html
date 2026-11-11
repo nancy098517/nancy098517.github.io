@@ -313,8 +313,21 @@ button:not(:disabled):active{transform:translateY(2px)}
 }
 /* V0.9.9 店員以手持菜單原圖取代浮動菜單，保持完整人物比例 */
 .scene .nancy-reference-art .nancy-reference-img{object-fit:contain!important;object-position:center bottom!important}
+/* V1.0.0：放大店員，確保右手拿菜單在手機上清楚可辨。
+   保留場景、結帳音效與財務計算邏輯不變。 */
+.scene .nancy-reference-art{right:1%!important;bottom:4px!important;width:146px!important;height:187px!important;max-width:30%!important}
+.scene .nancy-reference-art .nancy-reference-img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center bottom!important}
+.scene .nancy-reference-art .nancy-greeting{right:50%!important;top:-8px!important;z-index:12!important}
+@media(max-width:740px){
+ .scene .nancy-reference-art{right:0%!important;bottom:3px!important;width:139px!important;height:179px!important;max-width:33%!important}
+ .scene .nancy-reference-art .nancy-greeting{right:50%!important;top:-11px!important}
+}
+@media(max-width:400px){
+ .scene .nancy-reference-art{right:0%!important;bottom:3px!important;width:125px!important;height:161px!important;max-width:35%!important}
+ .scene .nancy-reference-art .nancy-greeting{right:48%!important;top:-10px!important}
+}
 </style></head><body>
-<header><div><h1>🍜 南西小吃｜一日店長</h1><p>從開店到打烊，看懂營收、人力與成本</p></div><span class="pill">免費經營遊戲 V0.9.9</span></header>
+<header><div><h1>🍜 南西小吃｜一日店長</h1><p>從開店到打烊，看懂營收、人力與成本</p></div><span class="pill">免費經營遊戲 V1.0.0</span></header>
 <main><div class="grid">
 <section class="card"><h2>⚙️ 本日／本週／本月怎麼經營？</h2><div class="nancy-mode"><button type="button" class="active" data-nancy-mode="day">本日</button><button type="button" data-nancy-mode="week">本週</button><button type="button" data-nancy-mode="month">本月</button></div><p class="tiny" id="nancyModeNote">預設本日，可播放營業動畫或直接查看結果。</p><div class="twos"><div class="field"><label for="start">開店時間</label><select id="start"></select></div><div class="field"><label for="end">打烊時間</label><select id="end"></select></div></div>
 <div class="twos"><div class="field"><label for="tables">店內桌數</label><input id="tables" type="number" min="1" max="60" value="8"></div><div class="field"><label for="reserved">已預訂人數</label><input id="reserved" type="number" min="0" value="12"></div></div>
