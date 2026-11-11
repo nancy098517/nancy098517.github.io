@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Nancy 的個人作品集：管理與分析工具、互動遊戲、網站及影音創作。">
+<title>作品集｜Nancy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12302d;--muted:#4d6b67;--paper:#f3f8f6;--card:#fff;--teal:#0f6b63;--deep:#0a3f3b;--mint:#cfe9e2;--line:#d3e3de;--serif:"Noto Serif TC","PMingLiU",serif;--sans:"Noto Sans TC","Microsoft JhengHei",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;color:var(--ink);font:16px/1.8 var(--sans);background:var(--paper)}
+a{color:var(--teal)}a:focus-visible{outline:3px solid #e3a23a;outline-offset:4px}
+header{position:sticky;top:0;z-index:5;background:#f3f8f6f5;border-bottom:1px solid var(--line);backdrop-filter:blur(7px)}
+.bar{max-width:1080px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;gap:20px}
+.brand{font:900 24px var(--serif);text-decoration:none;color:var(--deep)}
+.back{background:var(--mint);color:var(--deep);text-decoration:none;border-radius:40px;padding:7px 18px;font-weight:700}
+main{max-width:1080px;margin:0 auto;padding:48px 24px 70px}
+h1,h2{font-family:var(--serif);color:var(--deep)}
+h1{font-size:clamp(32px,5vw,46px);margin:0 0 14px}
+.lead{margin:0 0 24px;color:var(--muted);max-width:52em}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 4px}
+.filters a{display:inline-block;border:1px solid var(--line);border-radius:40px;padding:6px 14px;background:#fff;text-decoration:none;font-weight:700}
+section{padding-top:44px}
+h2{font-size:25px;margin:0 0 4px}
+.section-note{color:var(--muted);margin:0 0 18px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.post-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;color:inherit;text-decoration:none}
+.post-card h3{font-size:19px;color:var(--deep);margin:0 0 8px}
+.post-card p{color:var(--muted);margin:0 0 13px}
+.post-actions{display:flex;gap:10px 18px;flex-wrap:wrap}
+.more{color:var(--teal);font-weight:700;text-decoration:none}
+.post-card:hover{border-color:var(--teal)}
+footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);font-size:14px}
+@media(max-width:700px){.bar{padding:10px 16px}main{padding:30px 16px 54px}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="bar"><a class="brand" href="./index.html">Nancy</a><a class="back" href="./index.html#works">← 回到首頁</a></div></header>
+<main>
+<h1>作品集</h1>
+<p class="lead">從流程改善、管理分析到互動體驗與網站服務，記錄將想法逐步轉化為數位作品的過程。</p>
+<nav class="filters" aria-label="作品分類">
+<a href="#management">管理、分析與學習工具</a>
+<a href="#interactive">互動遊戲與體驗</a>
+<a href="#web">網站與影音創作</a>
+</nav>
+<section id="management"><h2>管理、分析與學習工具</h2><p class="section-note">以資訊整理、模擬分析及學習需求為出發點。</p><div class="cards"><a class="post-card" href="https://3311231021.github.io/practice/index.html" target="_blank" rel="noopener">
+        <h3>iPAS 淨零碳模擬測驗系統</h3>
+        <p>依實際備考需求設計的互動式測驗工具，可依級別、考科與題數建立練習，並提供即時答題回饋。</p>
+        <span class="more">查看作品 →</span>
+      </a>
+<a class="post-card" href="https://nancy-profit-health.netlify.app/" target="_blank" rel="noopener">
+        <h3>智慧健康促進平台</h3>
+        <p>跨健康與運動管理之智慧健康促進平台設計與實作。</p>
+        <span class="more">前往網站 →</span>
+      </a></div></section>
+<section id="interactive"><h2>互動遊戲與體驗</h2><p class="section-note">透過互動設計，將想法轉化為可體驗的數位作品。</p><div class="cards"><article class="post-card">
+        <h3>🍜 南西小吃｜一日店長：互動經營模擬遊戲</h3>
+        <p>模擬餐廳本日、本週與本月營運，可設定營業時間、來客、尖離峰排班、食材、水電及租金成本，自選動畫速度，透過圖表比較營收與費用、練習經營決策。使用虛構資料，免費試玩。</p>
+        <div class="post-actions">
+          <a class="more" href="https://nancy098517.github.io/nancy-food-game/" target="_blank" rel="noopener noreferrer">立即試玩 →</a>
+          <a class="more" href="https://www.youtube.com/shorts/FXl_7GPx3T8" target="_blank" rel="noopener noreferrer">觀看廣告短片（YouTube） →</a>
+        </div>
+      </article>
+<article class="post-card">
+        <h3>島遊趣：台灣環島旅行棋盤遊戲</h3>
+        <p>擲骰子、走訪台灣各地景點的旅行小遊戲，可把選好的行程複製後交給 AI 排行程，也能自訂地點、抽午餐吃什麼。</p>
+        <div class="post-actions">
+          <a class="more" href="https://nancy098517.github.io/island-fun/" target="_blank" rel="noopener">立即試玩 →</a>
+          <a class="more" href="https://www.youtube.com/channel/UCc09MfD45tVmxC0CrHU3Zbw" target="_blank" rel="noopener">AI 影片作品（YouTube 頻道） →</a>
+        </div>
+      </article>
+<a class="post-card" href="https://nancy098517.github.io/family-adventure/" target="_blank" rel="noopener">
+        <h3>幸福列車・家庭冒險日：互動闖關遊戲</h3>
+        <p>將家庭日活動轉化為互動體驗，包含滑草、射箭、高爾夫與彈珠台四種小遊戲；完成挑戰取得闖關章，並可在本機保存進度與製作回憶卡。以原創列車冒險概念呈現，不使用鐵路公司品牌。</p>
+        <span class="more">前往網站 →</span>
+      </a></div></section>
+<section id="web"><h2>網站與影音創作</h2><p class="section-note">網站服務與數位內容的設計及展示。</p><div class="cards"><a class="post-card" href="https://ltucceaa-sys.github.io/" target="_blank" rel="noopener">
+        <h3>嶺東幼保系友會官方網站</h3>
+        <p>系友會官方網站，提供最新消息、活動專區、系友風采與職涯資源。</p>
+        <span class="more">前往網站 →</span>
+      </a>
+<a class="post-card" href="https://www.youtube.com/@N-l8b168" target="_blank" rel="noopener noreferrer">
+        <h3>Nancy｜YouTube 影音創作</h3>
+        <p>透過 YouTube 分享影音創作與作品展示，記錄創意構想和數位內容的實作成果。</p>
+        <span class="more">前往 YouTube 頻道 →</span>
+      </a></div></section>
+</main>
+<footer>© <span id="year">2026</span> Nancy</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
+</html>
