@@ -36,6 +36,37 @@ h2{font-size:25px;margin:0 0 4px}
 .post-card:hover{border-color:var(--teal)}
 footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);font-size:14px}
 @media(max-width:700px){.bar{padding:10px 16px}main{padding:30px 16px 54px}.cards{grid-template-columns:1fr}}
+
+/* 預算管理作品展示：畫面及數字皆為虛構模擬 */
+.budget-work{grid-column:1/-1}
+.budget-work .subhead{font-size:13px;color:var(--teal);font-weight:700;margin-bottom:8px}
+.budget-work .budget-tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px}
+.budget-work .budget-tags span{background:var(--mint);padding:3px 10px;border-radius:99px;color:var(--deep);font-size:13px;font-weight:700}
+.budget-screens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 10px}
+.budget-shot{margin:0;min-width:0}
+.budget-shot figcaption{font-size:13px;color:var(--muted);margin-top:6px;text-align:center}
+.budget-ui{height:178px;overflow:hidden;position:relative;background:#f3f6fb;border:1px solid #ced9e6;border-radius:11px;box-shadow:0 4px 12px rgba(13,42,64,.07);font-family:var(--sans);font-size:10px;color:#243b55;line-height:1.4}
+.budget-ui .bar-top{background:#1c4669;color:#fff;padding:8px 10px;font-weight:700;display:flex;justify-content:space-between;gap:4px}
+.budget-ui .mock-badge{position:absolute;right:6px;bottom:6px;background:rgba(255,255,255,.96);border:1px solid #8aa9b3;color:#195968;border-radius:5px;padding:3px 7px;font-weight:700;letter-spacing:.04em;font-size:11px}
+.budget-ui .mock-pad{padding:11px}
+.budget-ui .mock-title{font-size:11px;font-weight:700;margin-bottom:8px}
+.budget-ui .kpis{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.budget-ui .kpis div{background:#fff;border:1px solid #dce6ef;border-radius:6px;padding:7px}
+.budget-ui .kpis small{display:block;color:#65778c;font-size:9px}.budget-ui .kpis strong{font-size:14px}
+.budget-ui .mock-cols{display:grid;grid-template-columns:1fr 1.3fr;gap:7px}
+.budget-ui .mock-form{background:white;border:1px solid #e1e7ee;border-radius:6px;padding:7px}
+.budget-ui .mock-input{height:12px;background:#edf2f8;border-radius:3px;margin:6px 0}
+.budget-ui .mock-btn{height:15px;background:#3677a8;border-radius:4px;margin-top:8px}
+.budget-ui .mock-table{background:#fff;border-radius:6px;padding:5px}
+.budget-ui .mock-row{display:flex;justify-content:space-between;border-bottom:1px solid #e4ecf2;padding:7px 3px;gap:4px}
+.budget-ui .mock-row:last-child{border:0}
+.budget-ui .bars{display:grid;gap:10px;background:#fff;border-radius:8px;padding:12px}
+.budget-ui .barlabel{display:flex;justify-content:space-between;font-size:9px}
+.budget-ui .track{height:8px;background:#e7eef5;border-radius:8px;overflow:hidden;margin-top:3px}
+.budget-ui .fill{height:100%;background:#368b9c;border-radius:8px}
+.budget-work .demo-note{font-size:13px;color:var(--muted);margin-top:14px}
+@media(max-width:730px){.budget-screens{grid-template-columns:1fr}.budget-ui{height:185px}.budget-work{grid-column:auto}}
+
 </style>
 </head>
 <body>
@@ -48,7 +79,56 @@ footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);fo
 <a href="#interactive">互動遊戲與體驗</a>
 <a href="#web">網站與影音創作</a>
 </nav>
-<section id="management"><h2>管理、分析與學習工具</h2><p class="section-note">以資訊整理、模擬分析及學習需求為出發點。</p><div class="cards"><a class="post-card" href="https://3311231021.github.io/practice/index.html" target="_blank" rel="noopener">
+<section id="management"><h2>管理、分析與學習工具</h2><p class="section-note">以資訊整理、模擬分析及學習需求為出發點。</p><div class="cards">
+<article class="post-card budget-work" id="budget-review">
+  <div class="subhead">個人開發作品｜AI 輔助系統設計</div>
+  <h3>預算管理與請購審查輔助系統</h3>
+  <p>從日常預算管理與請購審查需求出發，運用 AI 輔助開發本機管理工具，整合年度預算、請購審查、管理報表及權限管理，協助資料整理與作業分析。</p>
+  <div class="budget-tags"><span>預算管理</span><span>請購審查</span><span>報表分析</span><span>權限管理</span></div>
+  <div class="budget-screens" aria-label="三個使用虛構資料設計的模擬系統畫面">
+    <figure class="budget-shot">
+      <div class="budget-ui" role="img" aria-label="模擬畫面一：以虛構預算金額展示年度預算儀表板">
+        <div class="bar-top"><span>Budget · 預算管理</span><span>2027</span></div>
+        <div class="mock-pad"><div class="mock-title">年度預算執行總覽</div>
+          <div class="kpis">
+            <div><small>年度核定預算</small><strong>1,200,000</strong></div>
+            <div><small>年度累計已用</small><strong>680,000</strong></div>
+            <div><small>可用餘額</small><strong>520,000</strong></div>
+            <div><small>執行率</small><strong>56.7%</strong></div>
+          </div>
+        </div><span class="mock-badge">模擬畫面</span>
+      </div>
+      <figcaption>年度預算執行總覽｜模擬畫面</figcaption>
+    </figure>
+    <figure class="budget-shot">
+      <div class="budget-ui" role="img" aria-label="模擬畫面二：一般案件與重大購置請購審查操作">
+        <div class="bar-top"><span>Budget · 請購審查</span><span>2027</span></div>
+        <div class="mock-pad"><div class="mock-title">請購審查紀錄</div>
+          <div class="mock-cols">
+            <div class="mock-form"><b>新增案件</b><div class="mock-input"></div><div class="mock-input"></div><div class="mock-input"></div><div class="mock-btn"></div></div>
+            <div class="mock-table"><div class="mock-row"><b>案件</b><b>狀態</b></div><div class="mock-row"><span>辦公用品</span><span>已審查</span></div><div class="mock-row"><span>設備汰換</span><span>已審查</span></div><div class="mock-row"><span>清潔耗材</span><span>已審查</span></div></div>
+          </div>
+        </div><span class="mock-badge">模擬畫面</span>
+      </div>
+      <figcaption>請購案件審查｜模擬畫面</figcaption>
+    </figure>
+    <figure class="budget-shot">
+      <div class="budget-ui" role="img" aria-label="模擬畫面三：以虛構部門及金額展示單位預算報表">
+        <div class="bar-top"><span>Budget · 管理報表</span><span>2027</span></div>
+        <div class="mock-pad"><div class="mock-title">單位預算執行分析</div>
+          <div class="bars">
+            <div><div class="barlabel"><span>A 部門</span><span>72%</span></div><div class="track"><div class="fill" style="width:72%"></div></div></div>
+            <div><div class="barlabel"><span>B 部門</span><span>48%</span></div><div class="track"><div class="fill" style="width:48%"></div></div></div>
+            <div><div class="barlabel"><span>C 部門</span><span>63%</span></div><div class="track"><div class="fill" style="width:63%"></div></div></div>
+          </div>
+        </div><span class="mock-badge">模擬畫面</span>
+      </div>
+      <figcaption>各單位管理報表｜模擬畫面</figcaption>
+    </figure>
+  </div>
+  <p class="demo-note"><strong>展示說明：</strong>以上皆為模擬畫面，所有單位名稱、案件與金額均為虛構示意，不包含公司實際資料；不提供正式工作系統下載或登入。</p>
+</article>
+<a class="post-card" href="https://3311231021.github.io/practice/index.html" target="_blank" rel="noopener">
         <h3>iPAS 淨零碳模擬測驗系統</h3>
         <p>依實際備考需求設計的互動式測驗工具，可依級別、考科與題數建立練習，並提供即時答題回饋。</p>
         <span class="more">查看作品 →</span>
