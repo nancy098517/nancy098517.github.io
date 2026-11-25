@@ -65,6 +65,7 @@ footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);fo
 .budget-ui .track{height:8px;background:#e7eef5;border-radius:8px;overflow:hidden;margin-top:3px}
 .budget-ui .fill{height:100%;background:#368b9c;border-radius:8px}
 .budget-work .demo-note{font-size:13px;color:var(--muted);margin-top:14px}
+.budget-ui .mock-hint{font-size:9px;color:#51687c;margin-top:7px;line-height:1.5}
 @media(max-width:730px){.budget-screens{grid-template-columns:1fr}.budget-ui{height:185px}.budget-work{grid-column:auto}}
 
 
@@ -91,9 +92,9 @@ footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);fo
 <article class="post-card budget-work" id="budget-review">
   <div class="subhead">個人開發作品｜系統設計與功能實作</div>
   <h3>預算管理與請購審查輔助系統 <time class="work-date" datetime="2026-11-13" title="首次收錄於本站">2026.11.13</time></h3>
-  <p>自行規劃與開發的本機管理系統，整合年度預算、請購審查、報表分析及權限管理功能。透過需求分析、介面設計、功能測試與持續優化，實作資料整合與管理工具。</p>
-  <div class="budget-tags"><span>預算管理</span><span>請購審查</span><span>報表分析</span><span>權限管理</span></div>
-  <div class="budget-screens" aria-label="三個使用虛構資料設計的模擬系統畫面">
+  <p>自行規劃與開發的本機管理系統，整合年度預算、請購審查、管理報表、合約清單與角色權限管理。透過需求分析、介面設計、功能測試與持續優化，實作資料整合與管理工具。</p>
+  <div class="budget-tags"><span>預算管理</span><span>請購審查</span><span>報表分析</span><span>合約管理</span><span>系統權限管理</span></div>
+  <div class="budget-screens" aria-label="五個使用虛構資料設計的模擬系統畫面">
     <figure class="budget-shot">
       <div class="budget-ui" role="img" aria-label="模擬畫面一：以虛構預算金額展示年度預算儀表板">
         <div class="bar-top"><span>Budget · 預算管理</span><span>2027</span></div>
@@ -133,8 +134,39 @@ footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);fo
       </div>
       <figcaption>各單位管理報表｜模擬畫面</figcaption>
     </figure>
+    <figure class="budget-shot">
+      <div class="budget-ui" role="img" aria-label="模擬畫面四：虛構契約的期間、計價方式與效期狀態">
+        <div class="bar-top"><span>Budget · 合約清單</span><span>示意資料</span></div>
+        <div class="mock-pad"><div class="mock-title">契約效期與計價管理</div>
+          <div class="mock-table">
+            <div class="mock-row"><b>契約標的</b><b>計價方式</b><b>狀態</b></div>
+            <div class="mock-row"><span>範例維護服務</span><span>按月</span><span>有效</span></div>
+            <div class="mock-row"><span>範例設備保養</span><span>按次</span><span>即將到期</span></div>
+            <div class="mock-row"><span>範例租賃項目</span><span>固定費</span><span>已到期</span></div>
+          </div>
+          <div class="mock-hint">僅管理契約資訊，不進行採購核准或預算扣減</div>
+        </div><span class="mock-badge">模擬畫面</span>
+      </div>
+      <figcaption>合約清單與效期管理｜模擬畫面</figcaption>
+    </figure>
+    <figure class="budget-shot">
+      <div class="budget-ui" role="img" aria-label="模擬畫面五：使用虛構角色呈現權限分級和操作紀錄">
+        <div class="bar-top"><span>Budget · 系統權限</span><span>示意資料</span></div>
+        <div class="mock-pad"><div class="mock-title">角色權限與操作留痕</div>
+          <div class="mock-table">
+            <div class="mock-row"><b>示例角色</b><b>功能範圍</b></div>
+            <div class="mock-row"><span>系統管理者</span><span>權限設定</span></div>
+            <div class="mock-row"><span>一般使用者</span><span>業務作業</span></div>
+            <div class="mock-row"><span>代理登錄者</span><span>指定作業</span></div>
+            <div class="mock-row"><span>唯讀查詢者</span><span>資料查詢</span></div>
+          </div>
+          <div class="mock-hint">依角色控管功能，保留操作紀錄概念</div>
+        </div><span class="mock-badge">模擬畫面</span>
+      </div>
+      <figcaption>角色權限與操作紀錄｜模擬畫面</figcaption>
+    </figure>
   </div>
-  <p class="demo-note"><strong>展示說明：</strong>以上為介面模擬示意，非實際操作截圖；所有案件、單位名稱與數值均為虛構資料。</p>
+  <p class="demo-note"><strong>展示說明：</strong>以上皆為重新繪製的介面模擬示意，非實際操作截圖；案件、契約、角色、單位名稱與金額均為虛構資料，不包含公司內部資料、帳號或系統設定。</p>
 </article>
 <a class="post-card" href="https://3311231021.github.io/practice/index.html" target="_blank" rel="noopener">
         <h3>iPAS 淨零碳模擬測驗系統 <time class="work-date" datetime="2026-10-25" title="首次收錄於本站">2026.10.25</time></h3>
