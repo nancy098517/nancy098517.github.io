@@ -37,6 +37,10 @@ h2{font-size:25px;margin:0 0 4px}
 footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);font-size:14px}
 @media(max-width:700px){.bar{padding:10px 16px}main{padding:30px 16px 54px}.cards{grid-template-columns:1fr}}
 
+.feature-finance{border-left:4px solid var(--teal);border-color:#b9d7ce}
+.feature-finance h3{font-size:21px}
+.budget-work{border-left:4px solid var(--teal)}
+@media(max-width:700px){.feature-finance h3{font-size:19px}}
 /* 預算管理作品展示：畫面及數字皆為虛構模擬 */
 .budget-work{grid-column:1/-1}
 .budget-work .subhead{font-size:13px;color:var(--teal);font-weight:700;margin-bottom:8px}
@@ -76,21 +80,21 @@ footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);fo
 <header><div class="bar"><a class="brand" href="./index.html">Nancy</a><a class="back" href="./index.html#works">← 回到首頁</a></div></header>
 <main>
 <h1>作品集</h1>
-<p style="font-size:13px;color:var(--muted)">日期為可查到的首次收錄於本站的日期（台灣時間），不等於作品完成日。</p>
+<p style="font-size:13px;color:var(--muted)">作品標示日期為首次收錄於本站的日期，並非完成日期。</p>
 <p class="lead">從流程改善、管理分析到互動體驗與網站服務，記錄將想法逐步轉化為數位作品的過程。</p>
 <nav class="filters" aria-label="作品分類">
 <a href="#management">管理、分析與學習工具</a>
 <a href="#interactive">互動遊戲與體驗</a>
 <a href="#web">網站與影音創作</a>
 </nav>
-<section id="management"><h2>管理、分析與學習工具</h2><p class="section-note">以資訊整理、模擬分析及學習需求為出發點。</p><div class="cards">
-<a class="post-card" href="./family-finance-system.html">
+<section id="management"><h2>管理、分析與學習工具</h2><p class="section-note">以真實需求為出發點，展示管理工具的規劃、功能及公開模擬畫面。</p><div class="cards">
+<a class="post-card feature-finance" href="./family-finance-system.html">
   <h3>家計小屋｜家庭收支與投資管理系統 <time class="work-date" datetime="2026-11-14" title="首次收錄於本站">2026.11.14</time></h3>
   <p>實際開發的本機財務管理系統，整合家庭記帳、個人投資、多幣別資產與股利追蹤。展示圖以虛構資料製作，不包含真實帳務資料。</p>
   <span class="more">查看作品介紹 →</span>
 </a>
 <article class="post-card budget-work" id="budget-review">
-  <div class="subhead">個人開發作品｜系統設計與功能實作</div>
+  <div class="subhead">代表作品｜個人開發・管理流程輔助</div>
   <h3>預算管理輔助系統 <time class="work-date" datetime="2026-11-13" title="首次收錄於本站">2026.11.13</time></h3>
   <p>規劃與開發的本機管理系統，整合年度預算、請購審查、管理報表及合約清單等功能。透過需求分析、介面設計、功能測試與持續優化，實作資料整合與管理流程輔助工具。</p>
   <div class="budget-tags"><span>預算管理</span><span>請購審查</span><span>報表分析</span><span>合約管理</span></div>
