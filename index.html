@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nancy｜工業工程・數據分析・財務會計・ESG永續</title>
-<meta name="description" content="Nancy 的個人網站：結合工業工程、數據分析、財務會計、ESG 與生成式 AI，分享流程改善、互動旅遊遊戲及家庭日體驗設計作品。">
+<title>Nancy｜流程改善・財務管理・數位工具實作</title>
+<meta name="description" content="Nancy 的個人網站與作品集：以工業工程與企業營運實務為基礎，分享流程改善、財務與預算管理、資料分析、數位工具實作及互動創作。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
@@ -119,6 +119,11 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
 .post-card .work-date{display:inline-block;margin-inline-start:.55em;vertical-align:.12em;padding:.1em .55em;border:1px solid #edd7d7;border-radius:99px;background:#fbefef;color:#963e47;font-family:var(--sans);font-size:12px;font-weight:600;line-height:1.5;white-space:nowrap;font-variant-numeric:tabular-nums}
 
 .post-card .article-date{background:#eaf1ed;border-color:#d5e2dc;color:#405b51}
+.featured-work{border-color:#b9d7ce;border-left:4px solid var(--teal);padding:24px 26px}
+.featured-work .tag{margin:0 0 10px}
+.featured-work h3{font-size:21px;margin-bottom:9px}
+.works-subheading{font-weight:700;color:var(--teal-deep);font-size:18px;margin:18px 0 0}
+@media(max-width:600px){.featured-work{padding:20px}.featured-work h3{font-size:19px}.hero-in{padding-right:24px}.fields{opacity:.25;pointer-events:none}}
 </style>
 <link rel="stylesheet" href="./nancy-chat/widget.css">
 </head>
@@ -147,10 +152,11 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
   <div class="hero-in">
     <div>
       <h1>Nancy</h1>
-      <p class="role"><span class="role-item">工業工程</span>・<wbr><span class="role-item">數據分析</span>・<wbr><span class="role-item">財務會計</span>・<wbr><span class="role-item">ESG 永續</span>・<wbr><span class="role-item">AI 應用</span></p>
-      <p class="lead">以工業工程與 20 年大型企業營運實務為基礎，結合財務內控、資料治理及 AI 自動化應用，探索流程改善與數位轉型的實務價值。</p>
+      <p class="role"><span class="role-item">流程改善</span>・<wbr><span class="role-item">財務管理</span>・<wbr><span class="role-item">資料分析</span>・<wbr><span class="role-item">數位工具實作</span></p>
+      <p class="lead">以工業工程與企業營運實務為基礎，結合財務管理、資料分析與資訊工具，透過需求規劃及系統實作，探索流程改善與數位管理的實務價值。</p>
       <div class="btns">
-        <a class="btn primary" href="#about">認識我</a>
+        <a class="btn primary" href="#works">瀏覽代表作品</a>
+        <a class="btn ghost" href="#about">認識我</a>
       </div>
     </div>
     <svg class="fields" viewBox="0 0 440 400" role="img" aria-label="工業工程、數據分析、財務會計、ESG永續四個專業領域互相重疊">
@@ -222,9 +228,22 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
 
   <section id="works">
     <h2>作品集</h2>
-<p style="font-size:13px;color:var(--muted)">日期為可查到的首次收錄於本站的日期（台灣時間），不等於作品完成日。</p>
-    <p class="about-text" style="margin-bottom:20px">精選數位作品，涵蓋管理與分析、互動遊戲及網站服務；更多作品可至完整作品集瀏覽。</p>
+<p style="font-size:13px;color:var(--muted)">作品標示日期為首次收錄於本站的日期，並非完成日期。</p>
+    <p class="about-text" style="margin-bottom:20px">從管理工作與日常需求出發，規劃並實作數位工具，也持續探索互動遊戲與網站服務。下方先展示管理相關代表作品。</p>
     <div class="posts">
+      <a class="post-card featured-work" href="./portfolio.html#budget-review">
+        <span class="tag">代表作品｜管理系統</span>
+        <h3>預算管理輔助系統 <time class="work-date" datetime="2026-11-13" title="首次收錄於本站">2026.11.13</time></h3>
+        <p>從年度預算及請購審查的管理需求出發，規劃本機輔助系統，整合預算查詢、案件紀錄、管理報表與合約清單，並持續進行介面調整及功能測試。展示介面採虛構資料。</p>
+        <span class="more">查看系統設計與模擬展示 →</span>
+      </a>
+      <a class="post-card featured-work" href="./family-finance-system.html">
+        <span class="tag">代表作品｜財務工具</span>
+        <h3>家計小屋｜家庭收支與投資管理系統 <time class="work-date" datetime="2026-11-14" title="首次收錄於本站">2026.11.14</time></h3>
+        <p>以家庭收支及投資追蹤需求為出發點，開發本機管理工具，整合記帳、資產分類、多幣別投資與股利追蹤；公開展示使用虛構資料。</p>
+        <span class="more">查看功能與作品介紹 →</span>
+      </a>
+      <p class="works-subheading">其他互動與學習作品</p>
       <article class="post-card">
         <h3>Nancy 手搖飲｜三分鐘店長挑戰 <time class="work-date" datetime="2026-11-26" title="上傳日期">2026.11.26</time></h3>
         <p>看清訂單、選茶加料、搖杯交杯，挑戰三分鐘飲料店營運。連續成功可解鎖新飲料，結算後輸入暱稱，參加所有玩家共用的前 100 名排行榜；手機與電腦都能玩。</p>
@@ -237,11 +256,6 @@ footer{max-width:1080px;margin:0 auto;padding:56px 24px 40px;color:var(--muted);
         <div class="post-actions" style="display:flex;flex-wrap:wrap;gap:8px 18px"><a class="more" href="./picnic-match/" target="_blank" rel="noopener noreferrer">開始玩配對</a><a class="more" href="https://www.youtube.com/shorts/CBQGSG7F2Pc" target="_blank" rel="noopener noreferrer">觀看 15 秒廣告</a></div>
       </article>
 
-      <a class="post-card" href="./family-finance-system.html">
-        <h3>🏠 家計小屋｜家庭收支與投資管理系統 <time class="work-date" datetime="2026-11-14" title="首次收錄於本站">2026.11.14</time></h3>
-        <p>實際開發的本機家庭收支與投資管理系統，整合雙帳本、多幣別資產、股利追蹤及投資摘要。公開展示使用虛構資料，保護私人帳務。</p>
-        <span class="more">查看作品介紹 →</span>
-      </a>
       <article class="post-card">
         <h3>🍜 南西小吃｜一日店長：互動經營模擬遊戲 <time class="work-date" datetime="2026-11-09" title="首次收錄於本站">2026.11.09</time></h3>
         <p>模擬餐廳本日、本週與本月營運，可設定營業時間、來客、尖離峰排班、食材、水電及租金成本，自選動畫速度，透過圖表比較營收與費用、練習經營決策。使用虛構資料，免費試玩。</p>
