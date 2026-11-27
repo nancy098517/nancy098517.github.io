@@ -49,11 +49,11 @@ footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);fo
 .budget-screens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:18px 0 10px}
 .budget-shot{margin:0;min-width:0}
 .budget-shot figcaption{font-size:13px;color:var(--muted);margin-top:6px;text-align:center}
-.budget-ui{height:205px;overflow:hidden;position:relative;background:#f3f6fb;border:1px solid #ced9e6;border-radius:11px;box-shadow:0 4px 12px rgba(13,42,64,.07);font-family:var(--sans);font-size:10px;color:#243b55;line-height:1.4}
-.budget-ui .bar-top{background:#1c4669;color:#fff;padding:8px 10px;font-weight:700;display:flex;justify-content:space-between;gap:4px}
-.budget-ui .mock-badge{position:absolute;right:6px;bottom:6px;background:rgba(255,255,255,.96);border:1px solid #8aa9b3;color:#195968;border-radius:5px;padding:3px 7px;font-weight:700;letter-spacing:.04em;font-size:11px}
-.budget-ui .mock-pad{padding:11px}
-.budget-ui .mock-title{font-size:11px;font-weight:700;margin-bottom:8px}
+.budget-ui{height:242px;overflow:hidden;position:relative;background:#f3f6fb;border:1px solid #ced9e6;border-radius:11px;box-shadow:0 4px 12px rgba(13,42,64,.07);font-family:var(--sans);font-size:12px;color:#243b55;line-height:1.4}
+.budget-ui .bar-top{background:#1c4669;color:#fff;padding:10px 12px;font-weight:700;display:flex;justify-content:space-between;gap:4px}
+.budget-ui .mock-badge{position:absolute;right:8px;bottom:7px;background:rgba(255,255,255,.96);border:1px solid #8aa9b3;color:#195968;border-radius:5px;padding:3px 7px;font-weight:700;letter-spacing:.04em;font-size:11px}
+.budget-ui .mock-pad{padding:12px 13px 28px}
+.budget-ui .mock-title{font-size:13px;font-weight:700;margin-bottom:10px}
 .budget-ui .kpis{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .budget-ui .kpis div{background:#fff;border:1px solid #dce6ef;border-radius:6px;padding:7px}
 .budget-ui .kpis small{display:block;color:#65778c;font-size:9px}.budget-ui .kpis strong{font-size:14px}
@@ -61,16 +61,23 @@ footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);fo
 .budget-ui .mock-form{background:white;border:1px solid #e1e7ee;border-radius:6px;padding:7px}
 .budget-ui .mock-input{height:12px;background:#edf2f8;border-radius:3px;margin:6px 0}
 .budget-ui .mock-btn{height:15px;background:#3677a8;border-radius:4px;margin-top:8px}
-.budget-ui .mock-table{background:#fff;border-radius:6px;padding:5px}
-.budget-ui .mock-row{display:flex;justify-content:space-between;border-bottom:1px solid #e4ecf2;padding:7px 3px;gap:4px}
+.budget-ui .mock-table{background:#fff;border-radius:8px;padding:7px 9px}
+.budget-ui .mock-row{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e4ecf2;padding:8px 4px;gap:8px}
 .budget-ui .mock-row:last-child{border:0}
+.budget-ui .contract-head,.budget-ui .contract-line{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,.9fr) minmax(0,.85fr);align-items:center;column-gap:12px;min-height:30px;padding:7px 4px;border-bottom:1px solid #e4ecf2;font-size:12px}
+.budget-ui .contract-head{font-weight:700}
+.budget-ui .contract-line:last-child{border-bottom:0}
+.budget-ui .contract-head>*,.budget-ui .contract-line>*{min-width:0}
+.budget-ui .cell-left{text-align:left}
+.budget-ui .cell-center{text-align:center}
+.budget-ui .contract-line .cell-center{white-space:nowrap}
 .budget-ui .bars{display:grid;gap:10px;background:#fff;border-radius:8px;padding:12px}
 .budget-ui .barlabel{display:flex;justify-content:space-between;font-size:9px}
 .budget-ui .track{height:8px;background:#e7eef5;border-radius:8px;overflow:hidden;margin-top:3px}
 .budget-ui .fill{height:100%;background:#368b9c;border-radius:8px}
 .budget-work .demo-note{font-size:13px;color:var(--muted);margin-top:14px}
-.budget-ui .mock-hint{font-size:9px;color:#51687c;margin-top:7px;line-height:1.5}
-@media(max-width:730px){.budget-screens{grid-template-columns:1fr}.budget-ui{height:205px}.budget-work{grid-column:auto}}
+.budget-ui .mock-hint{font-size:10px;color:#51687c;margin-top:8px;line-height:1.45;padding-right:78px}
+@media(max-width:730px){.budget-screens{grid-template-columns:1fr}.budget-ui{height:242px}.budget-work{grid-column:auto}}\n@media(max-width:390px){.budget-ui .contract-head,.budget-ui .contract-line{column-gap:5px;font-size:11px}.budget-ui .mock-pad{padding-inline:10px}}
 
 
 .post-card .work-date{display:inline-block;margin-inline-start:.55em;vertical-align:.12em;padding:.1em .55em;border:1px solid #edd7d7;border-radius:99px;background:#fbefef;color:#963e47;font-family:var(--sans);font-size:12px;font-weight:600;line-height:1.5;white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -143,10 +150,10 @@ footer{max-width:1080px;margin:auto;padding:20px 24px 40px;color:var(--muted);fo
         <div class="bar-top"><span>Budget · 合約清單</span><span>示意資料</span></div>
         <div class="mock-pad"><div class="mock-title">契約效期與計價管理</div>
           <div class="mock-table">
-            <div class="mock-row"><b>契約標的</b><b>計價方式</b><b>狀態</b></div>
-            <div class="mock-row"><span>範例維護服務</span><span>按月</span><span>有效</span></div>
-            <div class="mock-row"><span>範例設備保養</span><span>按次</span><span>即將到期</span></div>
-            <div class="mock-row"><span>範例租賃項目</span><span>固定費</span><span>已到期</span></div>
+            <div class="contract-head"><span class="cell-left">契約標的</span><span class="cell-left">計價方式</span><span class="cell-center">狀態</span></div>
+            <div class="contract-line"><span class="cell-left">範例維護服務</span><span class="cell-left">按月</span><span class="cell-center">有效</span></div>
+            <div class="contract-line"><span class="cell-left">範例設備保養</span><span class="cell-left">按次</span><span class="cell-center">即將到期</span></div>
+            <div class="contract-line"><span class="cell-left">範例租賃項目</span><span class="cell-left">固定費</span><span class="cell-center">已到期</span></div>
           </div>
           <div class="mock-hint">僅管理契約資訊，不進行採購核准或預算扣減</div>
         </div><span class="mock-badge">模擬畫面</span>
